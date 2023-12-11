@@ -17,9 +17,11 @@ pipeline = transformers.pipeline(
 
 
 template = """
-write another paragraph to continue the story that follows, keeping the style of the story's author, Virginia Woolf, a modernist English writer whose text was written in 1917:
-
 {text}
+
+write another paragraph to continue the story above, keeping the style of the story's author, Virginia Woolf, a modernist English writer whose text was written in 1917:
+
+
 """
 
 prompt = PromptTemplate(input_variables=["text"], template=template)

@@ -26,7 +26,7 @@ write another two paragraphs to continue the story above, keeping the style of t
 
 prompt = PromptTemplate(input_variables=["text"], template=template)
 
-with open(sys.argv[1], 'r') as poem:
+with open('eli.txt', 'r') as poem:
     text = poem.read()
 
 poem_prompt = prompt.format(text=text)

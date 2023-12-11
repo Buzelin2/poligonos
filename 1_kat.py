@@ -17,9 +17,11 @@ pipeline = transformers.pipeline(
 
 
 template = """
-write another paragraph to continue the story that follows, keeping the style of the story's author, Katherine Mansfield:
-
 {text}
+
+write another paragraph to continue the story above, keeping the style of the story's author, Katherine Mansfield:
+
+
 """
 
 prompt = PromptTemplate(input_variables=["text"], template=template)

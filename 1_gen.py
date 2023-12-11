@@ -17,9 +17,11 @@ pipeline = transformers.pipeline(
 
 
 template = """
-write another paragraph to continue the story that follows:
-
 {text}
+
+write another paragraph to continue the story that above:
+
+
 """
 
 prompt = PromptTemplate(input_variables=["text"], template=template)

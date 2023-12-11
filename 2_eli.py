@@ -17,9 +17,11 @@ pipeline = transformers.pipeline(
 
 
 template = """
-write another two paragraphs to continue the story that follows, keeping the style of the story's author, an Irish-British novelist and short story writer whose text was written in 1955:
-
 {text}
+
+write another two paragraphs to continue the story above, keeping the style of the story's author, an Irish-British novelist and short story writer whose text was written in 1955:
+
+
 """
 
 prompt = PromptTemplate(input_variables=["text"], template=template)

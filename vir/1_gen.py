@@ -19,14 +19,14 @@ pipeline = transformers.pipeline(
 template = """
 {text}
 
-write another two paragraphs to continue the story above, keeping the style of the story's author, an Irish-British novelist and short story writer whose text was written in 1955:
+write another paragraph to continue the story that above:
 
 
 """
 
 prompt = PromptTemplate(input_variables=["text"], template=template)
 
-with open('eli.txt', 'r') as poem:
+with open(sys.argv[1], 'r') as poem:
     text = poem.read()
 
 poem_prompt = prompt.format(text=text)

@@ -19,14 +19,14 @@ pipeline = transformers.pipeline(
 template = """
 {text}
 
-write another paragraph to continue the story above, keeping the style of the story's author, a modernist English writer whose text was written in 1917:
+write another paragraph to continue the story that above:
 
 
 """
 
 prompt = PromptTemplate(input_variables=["text"], template=template)
 
-with open('vir.txt', 'r') as poem:
+with open(sys.argv[1], 'r') as poem:
     text = poem.read()
 
 poem_prompt = prompt.format(text=text)

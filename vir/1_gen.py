@@ -2,8 +2,6 @@ from transformers import AutoTokenizer
 import transformers
 import torch
 from langchain.prompts import PromptTemplate
-import sys
-
 
 model = "meta-llama/Llama-2-7b-chat-hf"
 
@@ -15,29 +13,32 @@ pipeline = transformers.pipeline(
     device_map="auto",
 )
 
-
 template = """
 {text}
 
 write another paragraph to continue the story that above:
-
-
 """
 
 prompt = PromptTemplate(input_variables=["text"], template=template)
 
-with open(sys.argv[1], 'r') as poem:
-    text = poem.read()
+for i in range(11):  # Loop para iterar sobre os arquivos
+    input_file_name = f'eli{i}.txt'
+    output_file_name = f'eli{i}_gerado.txt'
+    
+    with open(input_file_name, 'r') as poem:
+        text = poem.read()
 
-poem_prompt = prompt.format(text=text)
+    poem_prompt = prompt.format(text=text)
 
-sequences = pipeline(
-    poem_prompt,
-    do_sample=True,
-    top_k=10,
-    num_return_sequences=1,
-    eos_token_id=tokenizer.eos_token_id
-)
+    sequences = pipeline(
+        poem_prompt,
+        do_sample=True,
+        top_k=10,
+        num_return_sequences=1,
+        eos_token_id=tokenizer.eos_token_id
+    )
 
-for seq in sequences:
-    print(f"Result: {seq['generated_text']}")
+    with open(output_file_name, 'w') as output_file:
+        for seq in sequences:
+            output_file.write(seq['generated_text'])
+            print(f"Response for {input_file_name} saved to {output_file_name}")

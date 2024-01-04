@@ -23,7 +23,7 @@ prompt = PromptTemplate(input_variables=["text"], template=template)
 
 for i in range(11):  # Loop para iterar sobre os arquivos
     input_file_name = f'vir{i}.txt'
-    output_file_name = f'vir{i}_gerado_gen.txt'
+    output_file_name = f'vir{i}_gerado.txt'
     
     with open(input_file_name, 'r') as poem:
         text = poem.read()

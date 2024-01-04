@@ -22,8 +22,10 @@ write another paragraph to continue the story above, keeping the style of the st
 prompt = PromptTemplate(input_variables=["text"], template=template)
 
 for i in range(11):  # Loop para iterar sobre os arquivos
-    file_name = f'eli{i}.txt'
-    with open(file_name, 'r') as poem:
+    input_file_name = f'eli{i}.txt'
+    output_file_name = f'eli{i}_gerado.txt'
+    
+    with open(input_file_name, 'r') as poem:
         text = poem.read()
 
     poem_prompt = prompt.format(text=text)
@@ -36,5 +38,7 @@ for i in range(11):  # Loop para iterar sobre os arquivos
         eos_token_id=tokenizer.eos_token_id
     )
 
-    for seq in sequences:
-        print(f"Result for {file_name}: {seq['generated_text']}")
+    with open(output_file_name, 'w') as output_file:
+        for seq in sequences:
+            output_file.write(seq['generated_text'])
+            print(f"Response for {input_file_name} saved to {output_file_name}")

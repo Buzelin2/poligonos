@@ -22,8 +22,8 @@ write another paragraph to continue the story above, keeping the style of the st
 prompt = PromptTemplate(input_variables=["text"], template=template)
 
 for i in range(11):  # Loop para iterar sobre os arquivos
-    input_file_name = f'eli{i}.txt'
-    output_file_name = f'eli{i}_gerado.txt'
+    input_file_name = f'kat{i}.txt'
+    output_file_name = f'kat{i}_gerado.txt'
     
     with open(input_file_name, 'r') as poem:
         text = poem.read()
